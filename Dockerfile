@@ -1,3 +1,5 @@
 FROM tomcat
-COPY target/*.war /usr/local/tomcat/webapps
-CMD ["catalina.sh", "run"]
+RUN mkdir /app
+COPY ./ /app
+WORKDIR /app
+CMD mvn jetty:run-war
