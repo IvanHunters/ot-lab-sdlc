@@ -1,5 +1,3 @@
-FROM maven:3.8.5-amazoncorretto-11
-RUN mkdir /app
-COPY ./ /app
-WORKDIR /app
-CMD mvn jetty:run-war
+FROM tomcat:8.5.78-jdk11-corretto
+COPY target/*.war /usr/local/tomcat/webapps
+CMD ["catalina.sh", "run"]
